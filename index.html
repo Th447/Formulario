@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Candidatura</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <form name="candidatura" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="candidatura">
+        <h1>Formulário de Candidatura: Estágio em Suporte Técnico (TI)</h1>
+        <h2>Sobre Você</h2>
+
+        <label>
+            Nome completo:
+            <input type="text" name="nome_completo" id="nome_completo"><br><br>
+        </label>
+
+        <label>
+            Idade:
+            <input type="number" name="idade" id="idade"><br><br>
+        </label>
+
+        <label>
+            Cidade onde mora:
+            <input type="text" name="cidade_mora" id="cidade_mora"><br><br>
+        </label>
+
+        <label>
+            Está estudando atualmente? Se sim, qual curso e período?
+            <input type="text" name="estudando_atualmente" id="estudando_atualmente"><br><br>
+        </label>
+
+        <label>
+            Possui disponibilidade para trabalhar presencialmente em Nova Lima - MG?
+            <input type="text" name="disponibilidade_presencial" id="disponibilidade_presencial"><br><br>
+        </label>
+
+        <label>
+            Como ficou sabendo dessa oportunidade?
+            <input type="text" name="como_soube" id="como_soube"><br><br>
+        </label>
+
+        <h2>Seu Jeito de Pensar e Trabalhar</h2>
+
+        <label>
+            Você gosta de resolver problemas ou prefere seguir processos já definidos?
+            <input type="text" name="resolver_problemas" id="resolver_problemas"><br><br>
+        </label>
+
+        <label>
+            Prefere trabalhar sozinho ou em equipe?
+            <input type="text" name="trabalhar_sozinho_equipe" id="trabalhar_sozinho_equipe"><br><br>
+        </label>
+
+        <label>
+            O que te motiva a querer estagiar na área de suporte técnico?
+            <input type="text" name="motivacao_estagio" id="motivacao_estagio"><br><br>
+        </label>
+
+        <h2>Seu Nível de Conforto com Tecnologia</h2>
+
+        <label>
+            Quais sistemas operacionais você já usou? (Windows, Linux, macOS...)
+            <input type="text" name="sistemas_operacionais" id="sistemas_operacionais"><br><br>
+        </label>
+
+        <label>
+            Já instalou programas ou lidou com algum problema técnico? Conte uma experiência.
+            <input type="text" name="instalou_programas_problema" id="instalou_programas_problema"><br><br>
+        </label>
+
+        <label>
+            Já formatou um computador ou mexeu em configurações de rede?
+            <input type="text" name="formatou_computador_rede" id="formatou_computador_rede"><br><br>
+        </label>
+
+        <label>
+            Sabe diferenciar Wi-Fi de Ethernet? Já teve que configurar ou diagnosticar uma conexão?
+            <input type="text" name="wifi_ethernet" id="wifi_ethernet"><br><br>
+        </label>
+
+        <h2>Ferramentas e Conhecimentos Técnicos</h2>
+
+        <label>
+            Quais programas você domina? (Ex: Word, Excel, antivírus, navegadores, etc.)
+            <input type="text" name="programas_domina" id="programas_domina"><br><br>
+        </label>
+
+        <label>
+            Já usou ferramentas de acesso remoto, como AnyDesk ou TeamViewer?
+            <input type="text" name="ferramentas_acesso_remoto" id="ferramentas_acesso_remoto"><br><br>
+        </label>
+
+        <label>
+            Já ouviu falar de sistemas de chamados? Se sim, qual?
+            <input type="text" name="sistemas_chamados" id="sistemas_chamados"><br><br>
+        </label>
+
+        <label>
+            Tem noções de segurança digital? (Ex: senhas fortes, phishing, backups...)
+            <input type="text" name="seguranca_digital" id="seguranca_digital"><br><br>
+        </label>
+
+        <h2>Autoavaliação</h2>
+
+        <label>
+            De 1 a 5, como você avalia seu nível atual de conhecimento em informática?
+            <input type="number" name="nivel_conhecimento_informatica" id="nivel_conhecimento_informatica" min="1"
+                max="5"><br><br>
+        </label>
+
+        <label>
+            Qual área da tecnologia você tem mais curiosidade ou gostaria de aprender?
+            <input type="text" name="area_curiosidade_tecnologia" id="area_curiosidade_tecnologia"><br><br>
+        </label>
+
+        <label>
+            Está fazendo algum curso ou treinamento de TI atualmente? Qual?
+            <input type="text" name="curso_treinamento_ti" id="curso_treinamento_ti"><br><br>
+        </label>
+
+        <h2>Pra Finalizar</h2>
+
+        <label>
+            Já passou por alguma situação difícil relacionada à tecnologia? Como lidou com isso?
+            <input type="text" name="situacao_dificil_tecnologia" id="situacao_dificil_tecnologia"><br><br>
+        </label>
+
+        <label>
+            Se tivesse que explicar para alguém leigo o que é “formatar um computador”, como explicaria?
+            <input type="text" name="explicar_formatar" id="explicar_formatar"><br><br>
+        </label>
+
+        <label>
+            Deixe aqui uma mensagem final para a equipe — pode ser um comentário, sugestão ou por que você deveria ser
+            escolhido(a)!
+            <input type="text" name="mensagem_final" id="mensagem_final"><br><br>
+        </label>
+
+        <button type="submit">Salvar dados</button>
+
+        <div class="botoes-exportar">
+
+            <button type="button" id="exportPdf">Exportar PDF</button>
+            <button type="button" id="exportExcel">Exportar Excel</button>
+            <button type="button" id="clearData">Limpar Dados Salvos</button>
+        </div>
+
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
