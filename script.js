@@ -1,4 +1,4 @@
-/*
+
 //  Perguntas 
 const questionMap = {
     'nome_completo': 'Nome completo:',
@@ -36,24 +36,35 @@ function getSavedFormData() {
 }
 
 
-form.addEventListener('submit', async (event) => {
-  event.preventDefault(); // Evita o comportamento padrão do formulário
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
 
-  const formData = new FormData(form);
-  const data = {};
+    const formData = new FormData(form);
+    const data = {};
 
-  for (const [key, value] of formData.entries()) {
-    data[key] = value;
-  }
+    for (const [key, value] of formData.entries()) {
+        data[key] = value;
+    }
 
-  try {
-    const response = await fetch('https://script.google.com/macros/s/AKfycbwbs3kwPR89lTHAFAEbBgVAeRV4NBAQYJLiebHGEul5OLZPgbSnEsHTI3wLiM7oWiNN/exec', {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json',
-      }
+    // Salva no localStorage
+    localStorage.setItem('formData', JSON.stringify(data));
+
+    // Envia para Netlify (mesmo sem backend)
+    fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString()
+    })
+    .then(() => {
+        alert('Formulário enviado com sucesso!');
+        form.reset();
+    })
+    .catch((error) => {
+        alert('Erro ao enviar o formulário.');
+        console.error(error);
     });
+});
+
 
 
 //  Exportar para PDF
@@ -160,9 +171,7 @@ form.addEventListener('submit', async (event) => {
   }
 });
 
-const cors = require('cors');
-app.use(cors());
 
 
-*/
+
 
