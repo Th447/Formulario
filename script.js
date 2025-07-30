@@ -36,21 +36,24 @@ function getSavedFormData() {
 }
 
 
-form.addEventListener('submit', (event) => {
-    event.preventDefault(); // Prevents the default form submission behavior
+form.addEventListener('submit', async (event) => {
+  event.preventDefault(); // Evita o comportamento padrão do formulário
 
-    const formData = new FormData(form);
-    const data = {};
+  const formData = new FormData(form);
+  const data = {};
 
-    for (const [key, value] of formData.entries()) {
-        data[key] = value;
-    }
+  for (const [key, value] of formData.entries()) {
+    data[key] = value;
+  }
 
-    localStorage.setItem('formData', JSON.stringify(data));
-    // The alert will now only show when the form's submit button is clicked.
-    alert('Pronto para exportar');
-    
-});
+  try {
+    const response = await fetch('https://script.google.com/macros/s/AKfycbwbs3kwPR89lTHAFAEbBgVAeRV4NBAQYJLiebHGEul5OLZPgbSnEsHTI3wLiM7oWiNN/exec', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
 
 
 //  Exportar para PDF
